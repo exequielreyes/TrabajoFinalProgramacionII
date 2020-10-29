@@ -82,7 +82,7 @@ Partial Class FormMail
         '
         'Tbrutaarchivo
         '
-        Me.Tbrutaarchivo.Location = New System.Drawing.Point(640, 132)
+        Me.Tbrutaarchivo.Location = New System.Drawing.Point(550, 140)
         Me.Tbrutaarchivo.Name = "Tbrutaarchivo"
         Me.Tbrutaarchivo.Size = New System.Drawing.Size(100, 20)
         Me.Tbrutaarchivo.TabIndex = 51
@@ -95,7 +95,7 @@ Partial Class FormMail
         Me.Button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.Button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Location = New System.Drawing.Point(631, 37)
+        Me.Button1.Location = New System.Drawing.Point(286, 401)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(116, 43)
         Me.Button1.TabIndex = 50
