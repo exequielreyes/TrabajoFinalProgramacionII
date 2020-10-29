@@ -1,13 +1,13 @@
 ﻿Imports MySql.Data.MySqlClient
 
-'Imports System.Data.OleDb
+
 Module ConexionBD
 
     Private miConexion As New MySqlConnection
 
     Public Sub Conectarse()
         Try
-            miConexion.ConnectionString = "server=localhost;database=mydb;user=root;password=exequielmumia;"
+            miConexion.ConnectionString = "server=localhost;database=pilatesgym;user=root;password=exequielmumia;"
             miConexion.Open()
         Catch ex As Exception
             MsgBox(ex.Message)

@@ -53,22 +53,22 @@ Public Class FormNyAclientes
         'dgvListado.RowHeadersVisible = False
 
         Conectarse()
-        FormInicio.mydbDataSet.Tables("turno").Clear()
+        FormInicio.pilatesgymDataSet.Tables("turno").Clear()
         FormInicio.turnoDataAdapter.SelectCommand = New MySqlCommand("SELECT * FROM turno", Conexion)
         FormInicio.turnoDataAdapter.MissingSchemaAction = MissingSchemaAction.AddWithKey
-        FormInicio.turnoDataAdapter.Fill(FormInicio.mydbDataSet.Tables("turno"))
-        vista = FormInicio.mydbDataSet.Tables("turno").DefaultView
+        FormInicio.turnoDataAdapter.Fill(FormInicio.pilatesgymDataSet.Tables("turno"))
+        vista = FormInicio.pilatesgymDataSet.Tables("turno").DefaultView
         dgvListado2.DataSource = vista
         dgvListado2.Columns(0).Visible = False
         dgvListado2.ClearSelection()
 
 
 
-        FormInicio.mydbDataSet.Tables("historia clinica").Clear()
+        FormInicio.pilatesgymDataSet.Tables("historia clinica").Clear()
         FormInicio.historiaclinicaDataAdapter.SelectCommand = New MySqlCommand("SELECT * FROM historia_clinica", Conexion)
         FormInicio.historiaclinicaDataAdapter.MissingSchemaAction = MissingSchemaAction.AddWithKey
-        FormInicio.historiaclinicaDataAdapter.Fill(FormInicio.mydbDataSet.Tables("historia clinica"))
-        vista = FormInicio.mydbDataSet.Tables("historia clinica").DefaultView
+        FormInicio.historiaclinicaDataAdapter.Fill(FormInicio.pilatesgymDataSet.Tables("historia clinica"))
+        vista = FormInicio.pilatesgymDataSet.Tables("historia clinica").DefaultView
         dgvListado3.DataSource = vista
         dgvListado3.Columns(0).Visible = False
         dgvListado3.ClearSelection()
@@ -84,8 +84,8 @@ Public Class FormNyAclientes
 
         'Try
         If FormListadoClientes.accion = True Then
-                '1. Crear una nueva fila'
-                fila = FormInicio.mydbDataSet.Tables("turno").NewRow
+            '1. Crear una nueva fila'
+            fila = FormInicio.pilatesgymDataSet.Tables("turno").NewRow
 
             '2. Rellenar la fila con información
             'fila("cantidad") = cbMembresia.Text
@@ -95,12 +95,12 @@ Public Class FormNyAclientes
                 fila("hora") = tbHora.Text
 
 
-                '3. Agregar fila a la tabla del DataSet
-                FormInicio.mydbDataSet.Tables("turno").Rows.Add(fila)
+            '3. Agregar fila a la tabla del DataSet
+            FormInicio.pilatesgymDataSet.Tables("turno").Rows.Add(fila)
 
-                '4. Crear Comando para agregar a la BD la fila nueva
+            '4. Crear Comando para agregar a la BD la fila nueva
 
-                consulta = "INSERT INTO turno (cantidad,precio,meses,fecha,hora) VALUES ( @cant,@pre,@mes,@fec,@hor)"
+            consulta = "INSERT INTO turno (cantidad,precio,meses,fecha,hora) VALUES ( @cant,@pre,@mes,@fec,@hor)"
 
                 FormInicio.turnoDataAdapter.InsertCommand = New MySqlCommand(consulta, Conexion)
                 FormInicio.turnoDataAdapter.InsertCommand.Parameters.Add("@cant", MySqlDbType.Int32, 0, "cantidad")
@@ -112,12 +112,12 @@ Public Class FormNyAclientes
 
 
 
-                '5. Guardar los cambios en la base de datos
-                FormInicio.turnoDataAdapter.Update(FormInicio.mydbDataSet.Tables("turno"))
+            '5. Guardar los cambios en la base de datos
+            FormInicio.turnoDataAdapter.Update(FormInicio.pilatesgymDataSet.Tables("turno"))
 
 
-                '6. Actualiza la tabla del formulario listado de clientes
-                FormListadoClientes.CargaInicial()
+            '6. Actualiza la tabla del formulario listado de clientes
+            FormListadoClientes.CargaInicial()
 
             'Limpiamos los textbox para poder cargar otro cliente            
             'cbMembresia.Text = ""
@@ -128,8 +128,8 @@ Public Class FormNyAclientes
 
 
             Else
-                '1. Seleccionar fila a editar
-                fila = FormInicio.mydbDataSet.Tables("turno").Rows.Find(FormListadoClientes.idFila)
+            '1. Seleccionar fila a editar
+            fila = FormInicio.pilatesgymDataSet.Tables("turno").Rows.Find(FormListadoClientes.idFila)
 
 
             '2. Rellenar la fila con información   
@@ -152,12 +152,12 @@ Public Class FormNyAclientes
 
                 FormInicio.turnoDataAdapter.UpdateCommand.Parameters.Add("@id", MySqlDbType.Int32, 0, "idTurno")
 
-                '4. Guardar los cambios en la base de datos
-                FormInicio.turnoDataAdapter.Update(FormInicio.mydbDataSet.Tables("turno"))
+            '4. Guardar los cambios en la base de datos
+            FormInicio.turnoDataAdapter.Update(FormInicio.pilatesgymDataSet.Tables("turno"))
 
 
-                '5. Actualiza la tabla del formulario listado de clientes
-                FormListadoClientes.CargaInicial()
+            '5. Actualiza la tabla del formulario listado de clientes
+            FormListadoClientes.CargaInicial()
                 Me.Close()
 
 
@@ -206,7 +206,7 @@ Public Class FormNyAclientes
         'Try
         If FormListadoClientes.accion = True Then
             '1. Crear una nueva fila'
-            fila = FormInicio.mydbDataSet.Tables("historia clinica").NewRow
+            fila = FormInicio.pilatesgymDataSet.Tables("historia clinica").NewRow
 
             '2. Rellenar la fila con información
             fila("patologia") = cbPatologia.Text
@@ -215,7 +215,7 @@ Public Class FormNyAclientes
 
 
             '3. Agregar fila a la tabla del DataSet
-            FormInicio.mydbDataSet.Tables("historia_clinica").Rows.Add(fila)
+            FormInicio.pilatesgymDataSet.Tables("historia_clinica").Rows.Add(fila)
 
             '4. Crear Comando para agregar a la BD la fila nueva
 
@@ -229,7 +229,7 @@ Public Class FormNyAclientes
 
 
             '5. Guardar los cambios en la base de datos
-            FormInicio.historiaclinicaDataAdapter.Update(FormInicio.mydbDataSet.Tables("historia clinica"))
+            FormInicio.historiaclinicaDataAdapter.Update(FormInicio.pilatesgymDataSet.Tables("historia clinica"))
 
 
             '6. Actualiza la tabla del formulario listado de clientes
@@ -242,7 +242,7 @@ Public Class FormNyAclientes
 
         Else
             '1. Seleccionar fila a editar
-            fila = FormInicio.mydbDataSet.Tables("historia clinica").Rows.Find(FormListadoClientes.idFila)
+            fila = FormInicio.pilatesgymDataSet.Tables("historia clinica").Rows.Find(FormListadoClientes.idFila)
 
 
             '2. Rellenar la fila con información   
@@ -260,7 +260,7 @@ Public Class FormNyAclientes
             FormInicio.historiaclinicaDataAdapter.UpdateCommand.Parameters.Add("@id", MySqlDbType.Int32, 0, "idTurno")
 
             '4. Guardar los cambios en la base de datos
-            FormInicio.historiaclinicaDataAdapter.Update(FormInicio.mydbDataSet.Tables("historia clinica"))
+            FormInicio.historiaclinicaDataAdapter.Update(FormInicio.pilatesgymDataSet.Tables("historia clinica"))
 
 
             '5. Actualiza la tabla del formulario listado de clientes

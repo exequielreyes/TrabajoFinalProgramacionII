@@ -1,17 +1,16 @@
 ﻿Imports MySql.Data.MySqlClient
 Imports System.IO
-'Imports System.Data.OleDb
+
 'Imports System.Runtime.InteropServices
 Public Class FormCliente
 
     Public sRuta As String
-    Dim Conexion As New MySqlConnection("Server = localhost; Database = mydb; Uid = root; Pwd = exequielmumia")
+    Dim Conexion As New MySqlConnection("Server = localhost; Database = mydb; user= root; password = exequielmumia;")
+
 
     Dim QR_Generator As New MessagingToolkit.QRCode.Codec.QRCodeEncoder
 
     Private Sub FormCliente_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-
 
         If FormListadoClientes.accion Then
             tbNombre.Text = ""
@@ -20,6 +19,9 @@ Public Class FormCliente
             tbEdad.Text = ""
             tbDireccion.Text = ""
             tbTelefono.Text = ""
+            PictureBox1.Refresh()
+            pbFoto.Refresh()
+
 
 
             Me.Text = "Nuevo Cliente"
@@ -28,100 +30,102 @@ Public Class FormCliente
         End If
     End Sub
 
-
-
-
     Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
         Dim fila As DataRow
         Dim consulta As String
 
         'Try
         If FormListadoClientes.accion = True Then
-                '1. Crear una nueva fila'
-                fila = FormInicio.mydbDataSet.Tables("Cliente").NewRow
+            '1. Crear una nueva fila'
+            fila = FormInicio.pilatesgymDataSet.Tables("Alumno").NewRow
 
-                '2. Rellenar la fila con información
-                fila("nombre") = tbNombre.Text
+            '2. Rellenar la fila con información
+            fila("nombre") = tbNombre.Text
             fila("apellido") = tbApellido.Text
             fila("dni") = tbDni.Text
             fila("edad") = tbEdad.Text
-                fila("direccion") = tbDireccion.Text
-                fila("telefono") = tbTelefono.Text
+            fila("direccion") = tbDireccion.Text
+            fila("telefono") = tbTelefono.Text
+            fila("nombreqr") = PictureBox1.Image
+            fila("foto") = pbFoto.Image
 
 
-
-
-                '3. Agregar fila a la tabla del DataSet
-                FormInicio.mydbDataSet.Tables("Cliente").Rows.Add(fila)
+            '3. Agregar fila a la tabla del DataSet
+            FormInicio.pilatesgymDataSet.Tables("alumno").Rows.Add(fila)
 
             '4. Crear Comando para agregar a la BD la fila nueva
 
-            consulta = "INSERT INTO cliente (nombre, apellido,dni, edad, direccion ,telefono) VALUES ( @nom, @ape,@dni, @ed,@dir,@tel)"
-            FormInicio.clienteDataAdapter.InsertCommand = New MySqlCommand(consulta, Conexion)
-                FormInicio.clienteDataAdapter.InsertCommand.Parameters.Add("@nom", MySqlDbType.VarChar, 45, "nombre")
-                FormInicio.clienteDataAdapter.InsertCommand.Parameters.Add("@ape", MySqlDbType.VarChar, 45, "apellido")
-            FormInicio.clienteDataAdapter.InsertCommand.Parameters.Add("@dni", MySqlDbType.Int32, 0, "dni")
-            FormInicio.clienteDataAdapter.InsertCommand.Parameters.Add("@ed", MySqlDbType.Int32, 0, "edad")
-            FormInicio.clienteDataAdapter.InsertCommand.Parameters.Add("@dir", MySqlDbType.VarChar, 100, "direccion")
-            FormInicio.clienteDataAdapter.InsertCommand.Parameters.Add("@tel", MySqlDbType.VarChar, 20, "telefono")
-            'FormInicio.clienteDataAdapter.InsertCommand.Parameters.Add("@cla", MySqlDbType.Int32, 0, "clase_abonadas")
+            consulta = "INSERT INTO alumno (nombre, apellido,dni, edad, direccion ,telefono,nombreqr,foto) VALUES ( @nom, @ape,@dni, @ed,@dir,@tel,@qr,@fot)"
+            FormInicio.alumnoDataAdapter.InsertCommand = New MySqlCommand(consulta, Conexion)
+            FormInicio.alumnoDataAdapter.InsertCommand.Parameters.Add("@nom", MySqlDbType.VarChar, 45, "nombre")
+            FormInicio.alumnoDataAdapter.InsertCommand.Parameters.Add("@ape", MySqlDbType.VarChar, 45, "apellido")
+            FormInicio.alumnoDataAdapter.InsertCommand.Parameters.Add("@dni", MySqlDbType.Int32, 0, "dni")
+            FormInicio.alumnoDataAdapter.InsertCommand.Parameters.Add("@ed", MySqlDbType.Int32, 0, "edad")
+            FormInicio.alumnoDataAdapter.InsertCommand.Parameters.Add("@dir", MySqlDbType.VarChar, 100, "direccion")
+            FormInicio.alumnoDataAdapter.InsertCommand.Parameters.Add("@tel", MySqlDbType.VarChar, 20, "telefono")
+            FormInicio.alumnoDataAdapter.InsertCommand.Parameters.Add("@qr", MySqlDbType.Blob, "nombreqr")
+            FormInicio.alumnoDataAdapter.InsertCommand.Parameters.Add("@fot", MySqlDbType.Blob, "foto")
+
 
 
             '5. Guardar los cambios en la base de datos
-            FormInicio.clienteDataAdapter.Update(FormInicio.mydbDataSet.Tables("cliente"))
+            FormInicio.alumnoDataAdapter.Update(FormInicio.pilatesgymDataSet.Tables("alumno"))
 
 
-                '6. Actualiza la tabla del formulario listado de clientes
-                FormListadoClientes.CargaInicial()
+            '6. Actualiza la tabla del formulario listado de clientes
+            FormListadoClientes.CargaInicial()
 
-                'Limpiamos los textbox para poder cargar otro cliente            
-                tbNombre.Text = ""
-                tbApellido.Text = ""
+            'Limpiamos los textbox para poder cargar otro cliente            
+            tbNombre.Text = ""
+            tbApellido.Text = ""
             tbDni.Text = ""
             tbEdad.Text = ""
-                tbDireccion.Text = ""
-                tbTelefono.Text = ""
+            tbDireccion.Text = ""
+            tbTelefono.Text = ""
+            PictureBox1.Refresh()
+            pbFoto.Refresh()
 
 
-            Else
-                '1. Seleccionar fila a editar
-                fila = FormInicio.mydbDataSet.Tables("Cliente").Rows.Find(FormListadoClientes.idFila)
+        Else
+            '1. Seleccionar fila a editar
+            fila = FormInicio.pilatesgymDataSet.Tables("alumno").Rows.Find(FormListadoClientes.idFila)
 
 
-                '2. Rellenar la fila con información   
-                fila("Nombre") = tbNombre.Text
+
+            '2. Rellenar la fila con información   
+            fila("Nombre") = tbNombre.Text
             fila("apellido") = tbApellido.Text
             fila("dni") = tbDni.Text
-            'fila("dni") = tbDNI.Text
             fila("edad") = tbEdad.Text
-                fila("direccion") = tbDireccion.Text
-                fila("telefono") = tbTelefono.Text
-
+            fila("direccion") = tbDireccion.Text
+            fila("telefono") = tbTelefono.Text
+            fila("nombreqr") = PictureBox1.Image
+            fila("foto") = pbFoto.Image
 
 
             '3. Crear Comando para modificar la fila en la BD
 
-            consulta = "UPDATE cliente SET nombre=@nom, apellido=@ape, dni=@dni ,edad=@ed, direccion =@dir, telefono=@tel   WHERE id=@id"
-            FormInicio.clienteDataAdapter.UpdateCommand = New MySqlCommand(consulta, Conexion)
-                FormInicio.clienteDataAdapter.UpdateCommand.Parameters.Add("@nom", MySqlDbType.VarChar, 45, "nombre")
-                FormInicio.clienteDataAdapter.UpdateCommand.Parameters.Add("@ape", MySqlDbType.VarChar, 45, "apellido")
-                FormInicio.clienteDataAdapter.UpdateCommand.Parameters.Add("@dni", MySqlDbType.Int32, 0, "dni")
-                FormInicio.clienteDataAdapter.UpdateCommand.Parameters.Add("@ed", MySqlDbType.Int32, 0, "edad")
-                FormInicio.clienteDataAdapter.UpdateCommand.Parameters.Add("@dir", MySqlDbType.VarChar, 100, "direccion")
-                FormInicio.clienteDataAdapter.UpdateCommand.Parameters.Add("@tel", MySqlDbType.Int32, 11, "telefono")
+            consulta = "UPDATE alumno SET nombre=@nom, apellido=@ape, dni=@dni ,edad=@ed, direccion =@dir, telefono=@tel, nombreqr=@qr , foto=@fot   WHERE id_alumno=@id"
+            FormInicio.alumnoDataAdapter.UpdateCommand = New MySqlCommand(consulta, Conexion)
+            FormInicio.alumnoDataAdapter.UpdateCommand.Parameters.Add("@nom", MySqlDbType.VarChar, 45, "nombre")
+            FormInicio.alumnoDataAdapter.UpdateCommand.Parameters.Add("@ape", MySqlDbType.VarChar, 45, "apellido")
+            FormInicio.alumnoDataAdapter.UpdateCommand.Parameters.Add("@dni", MySqlDbType.Int32, 0, "dni")
+            FormInicio.alumnoDataAdapter.UpdateCommand.Parameters.Add("@ed", MySqlDbType.Int32, 0, "edad")
+            FormInicio.alumnoDataAdapter.UpdateCommand.Parameters.Add("@dir", MySqlDbType.VarChar, 100, "direccion")
+            FormInicio.alumnoDataAdapter.UpdateCommand.Parameters.Add("@tel", MySqlDbType.Int32, 11, "telefono")
+            FormInicio.alumnoDataAdapter.UpdateCommand.Parameters.Add("@qr", MySqlDbType.Blob, "nombreqr")
+            FormInicio.alumnoDataAdapter.UpdateCommand.Parameters.Add("@fot", MySqlDbType.Blob, "foto")
 
-            FormInicio.clienteDataAdapter.UpdateCommand.Parameters.Add("@id", MySqlDbType.Int32, 0, "id")
+            FormInicio.alumnoDataAdapter.UpdateCommand.Parameters.Add("@id", MySqlDbType.Int32, 0, "id_alumno")
 
             '4. Guardar los cambios en la base de datos
-            FormInicio.clienteDataAdapter.Update(FormInicio.mydbDataSet.Tables("cliente"))
+            FormInicio.alumnoDataAdapter.Update(FormInicio.pilatesgymDataSet.Tables("alumno"))
 
 
-                '5. Actualiza la tabla del formulario listado de clientes
-                FormListadoClientes.CargaInicial()
-                Me.Close()
-
-
-            End If
+            '5. Actualiza la tabla del formulario listado de clientes
+            FormListadoClientes.CargaInicial()
+            Me.Close()
+        End If
         'Catch ex As Exception
         '    MsgBox("Error espacio en blanco", MsgBoxStyle.Critical)
 
@@ -162,17 +166,17 @@ Public Class FormCliente
         End Try
     End Sub
 
-    'Private Sub tbDNI_TextChanged(sender As Object, e As EventArgs)
-    '    Try
-    '        PictureBox1.Image = QR_Generator.Encode(tbDNI.Text)
-    '    Catch ex As Exception
-    '        MsgBox(ex.Message)
-    '    End Try
-    'End Sub
+    Private Sub tbDNI_TextChanged(sender As Object, e As EventArgs)
+        Try
+            PictureBox1.Image = QR_Generator.Encode(tbDni.Text)
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
 
     Private Sub tbEdad_TextChanged(sender As Object, e As EventArgs) Handles tbEdad.TextChanged
         Try
-            PictureBox1.Image = QR_Generator.Encode("Nombre:" & tbNombre.Text & vbCrLf & "Apellido:" & tbApellido.Text & vbCrLf & vbCrLf & "Edad:" & tbEdad.Text)
+            PictureBox1.Image = QR_Generator.Encode("Nombre:" & tbNombre.Text & vbCrLf & "Apellido:" & tbApellido.Text & vbCrLf & "Dni: " & tbDni.Text & vbCrLf & "Edad:" & tbEdad.Text)
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
@@ -272,6 +276,11 @@ Public Class FormCliente
             pbFoto.Image = Image.FromFile(OpenFileDialog1.FileName)
         End If
     End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        FormMail.ShowDialog()
+    End Sub
+
 
 
 

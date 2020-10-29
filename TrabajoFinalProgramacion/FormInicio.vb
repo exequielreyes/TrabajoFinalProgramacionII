@@ -2,10 +2,10 @@
 'Imports System.Runtime.InteropServices
 
 Public Class FormInicio
-    Public Property clienteDataAdapter As New MySqlDataAdapter
+    Public Property alumnoDataAdapter As New MySqlDataAdapter
     Public Property turnoDataAdapter As New MySqlDataAdapter
     Public Property historiaclinicaDataAdapter As New MySqlDataAdapter
-    Public Property mydbDataSet As New DataSet
+    Public Property pilatesgymDataSet As New DataSet
     '<DllImport("user32.DLL", EntryPoint:="ReleaseCapture")>
     'Private Shared Sub ReleaseCapture()
     'End Sub
@@ -15,10 +15,10 @@ Public Class FormInicio
     'End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        mydbDataSet.Tables.Add("cliente")
-        mydbDataSet.Tables.Add("turno")
+        pilatesgymDataSet.Tables.Add("alumno")
+        pilatesgymDataSet.Tables.Add("turno")
 
-        mydbDataSet.Tables.Add("historia clinica")
+        pilatesgymDataSet.Tables.Add("historia clinica")
     End Sub
 
     Private Sub btnClientes_Click(sender As Object, e As EventArgs) Handles btnClientes.Click

@@ -26,6 +26,7 @@ Partial Class FormCliente
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.btnCargar = New System.Windows.Forms.Button()
         Me.pbFoto = New System.Windows.Forms.PictureBox()
         Me.bGuardar = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
@@ -58,7 +59,7 @@ Partial Class FormCliente
         Me.btnGuardar = New System.Windows.Forms.Button()
         Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
-        Me.btnCargar = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.GroupBox2.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -95,6 +96,7 @@ Partial Class FormCliente
         '
         'TabPage1
         '
+        Me.TabPage1.Controls.Add(Me.Button1)
         Me.TabPage1.Controls.Add(Me.btnCargar)
         Me.TabPage1.Controls.Add(Me.pbFoto)
         Me.TabPage1.Controls.Add(Me.bGuardar)
@@ -119,6 +121,15 @@ Partial Class FormCliente
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Datos personales"
         Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'btnCargar
+        '
+        Me.btnCargar.Location = New System.Drawing.Point(638, 293)
+        Me.btnCargar.Name = "btnCargar"
+        Me.btnCargar.Size = New System.Drawing.Size(82, 29)
+        Me.btnCargar.TabIndex = 26
+        Me.btnCargar.Text = "Cargar"
+        Me.btnCargar.UseVisualStyleBackColor = True
         '
         'pbFoto
         '
@@ -467,14 +478,16 @@ Partial Class FormCliente
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
-        'btnCargar
+        'Button1
         '
-        Me.btnCargar.Location = New System.Drawing.Point(638, 293)
-        Me.btnCargar.Name = "btnCargar"
-        Me.btnCargar.Size = New System.Drawing.Size(82, 29)
-        Me.btnCargar.TabIndex = 26
-        Me.btnCargar.Text = "Cargar"
-        Me.btnCargar.UseVisualStyleBackColor = True
+        Me.Button1.Cursor = System.Windows.Forms.Cursors.Default
+        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.Location = New System.Drawing.Point(498, 341)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(155, 29)
+        Me.Button1.TabIndex = 27
+        Me.Button1.Text = "Enviar por mail"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'FormCliente
         '
@@ -535,4 +548,5 @@ Partial Class FormCliente
     Private WithEvents pbFoto As PictureBox
     Friend WithEvents btnCargar As Button
     Friend WithEvents OpenFileDialog1 As OpenFileDialog
+    Friend WithEvents Button1 As Button
 End Class
