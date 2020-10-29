@@ -1,0 +1,131 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+TrabajoFinalProgramacion
+</name>
+</assembly>
+<members>
+<member name="T:TrabajoFinalProgramacion.My.Resources.Resources">
+<summary>
+  Clase de recurso fuertemente tipado, para buscar cadenas traducidas, etc.
+</summary>
+</member>
+<member name="P:TrabajoFinalProgramacion.My.Resources.Resources.ResourceManager">
+<summary>
+  Devuelve la instancia de ResourceManager almacenada en caché utilizada por esta clase.
+</summary>
+</member>
+<member name="P:TrabajoFinalProgramacion.My.Resources.Resources.Culture">
+<summary>
+  Reemplaza la propiedad CurrentUICulture del subproceso actual para todas las
+  búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
+</summary>
+</member>
+<member name="P:TrabajoFinalProgramacion.My.Resources.Resources.asistencia">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:TrabajoFinalProgramacion.My.Resources.Resources.asistencia1">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:TrabajoFinalProgramacion.My.Resources.Resources.Cancel24">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:TrabajoFinalProgramacion.My.Resources.Resources.Cancel241">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:TrabajoFinalProgramacion.My.Resources.Resources.Captura">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:TrabajoFinalProgramacion.My.Resources.Resources.client">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:TrabajoFinalProgramacion.My.Resources.Resources.clientes">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:TrabajoFinalProgramacion.My.Resources.Resources.edit_find">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:TrabajoFinalProgramacion.My.Resources.Resources.fondo_azul_blue_cuadros_fotorecurso">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:TrabajoFinalProgramacion.My.Resources.Resources.gtk_edit">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:TrabajoFinalProgramacion.My.Resources.Resources.gtk_remove">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:TrabajoFinalProgramacion.My.Resources.Resources.Imagen1_sin_fondo">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:TrabajoFinalProgramacion.My.Resources.Resources.Imagen1exit">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:TrabajoFinalProgramacion.My.Resources.Resources.list_add">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:TrabajoFinalProgramacion.My.Resources.Resources.list_remove">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:TrabajoFinalProgramacion.My.Resources.Resources.Mobile_Menu_Icon">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:TrabajoFinalProgramacion.My.Resources.Resources.objetos_vectoriales_e_iconos_para_deporte_etiqueta_gimnasio_fitness_distintivo_diseno_de_logotipo_vector_t5nryc">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:TrabajoFinalProgramacion.My.Resources.Resources.Panel">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:TrabajoFinalProgramacion.My.Resources.Resources.registro_clientes">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:TrabajoFinalProgramacion.My.Resources.Resources.salir">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:TrabajoFinalProgramacion.My.Resources.Resources.Save24">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+</members>
+</doc>
